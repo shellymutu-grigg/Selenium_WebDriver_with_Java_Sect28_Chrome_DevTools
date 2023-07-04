@@ -1,0 +1,3 @@
+https://chromedevtools.github.io/devtools-protocol/
+
+Can block the loading of images and CSS using chrome dev tools - page load faster
