@@ -30,9 +30,16 @@ public class ReduceNetworkSpeedTest {
 
 		// emulateNetworkConditions(offline, latency(ms), downloadThroughput(bytes),
 		// uploadThroughput(bytes), connectionType));
+		// Set to true if you want to disconnect internet
 		devTools.send(
-				Network.emulateNetworkConditions(false, 3000, 20000, 100000, Optional.of(ConnectionType.ETHERNET)));
+				Network.emulateNetworkConditions(false, 1000, 20000, 100000, Optional.of(ConnectionType.ETHERNET)));
 
+		// addListener(event, handler);
+		devTools.addListener(Network.loadingFailed(), loadingFailed -> {
+			System.out.println(MessageFormat.format("Network.loadingFailed(): {0}", loadingFailed.getErrorText()));
+			System.out.println(
+					MessageFormat.format("Network.loadingFailed( timestamp): {0}", loadingFailed.getTimestamp()));
+		});
 		System.out.println(MessageFormat.format("After Network.emulateNetworkConditions: {0}", devTools.hashCode()));
 
 		// Get execution start time
@@ -64,7 +71,7 @@ public class ReduceNetworkSpeedTest {
 		System.out.println(MessageFormat.format("Total execution time: {0}ms", endTime - startTime));
 
 		// Took 293,524ms WITH latency
-		// Took WITHOUT latency
+		// Took 6,265ms WITHOUT latency
 
 		// Close session
 		chromeDriver.close();
