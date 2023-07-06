@@ -40,7 +40,7 @@ public class MockNetworkFailedRequestTest {
 			devTools.send(Fetch.failRequest(request.getRequestId(), ErrorReason.FAILED));
 		});
 
-		// Access webpage
+		// Access web page
 		chromeDriver.get("https://rahulshettyacademy.com/angularAppdemo/");
 
 		// Click on library button
@@ -48,6 +48,7 @@ public class MockNetworkFailedRequestTest {
 
 		Thread.sleep(3000);
 
+		// Determine if any text is displayed on page
 		String paragraphMessageString = "";
 		List<WebElement> size = chromeDriver.findElements(By.cssSelector("p"));
 		if (size.isEmpty()) {
