@@ -1,10 +1,12 @@
+import java.text.MessageFormat;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 
-public class CdpCommandsTest {
+public class SetGeoLocationTest {
 
 	public static void main(String[] args) throws InterruptedException {
 		// Setup chrome driver
@@ -19,27 +21,29 @@ public class CdpCommandsTest {
 		devTools.createSession();
 
 		// Create a HashMap for the parameters
-		HashMap<String, Object> deviceMetricsMap = new HashMap<String, Object>();
-		deviceMetricsMap.put("width", 600);
-		deviceMetricsMap.put("height", 1000);
-		deviceMetricsMap.put("deviceScaleFactor", 50);
-		deviceMetricsMap.put("mobile", true);
+		HashMap<String, Object> geoPointsMap = new HashMap<String, Object>();
+		geoPointsMap.put("latitude", 40);
+		geoPointsMap.put("longitude", -3);
+		geoPointsMap.put("accuracy", 1);
 
 		// See documentation https://chromedevtools.github.io/devtools-protocol/
 		// Send the commands to Chrome DevTools Protocol (CDP) by sending directly to
 		// CDP not via
 		// existing wrapper method
-		chromeDriver.executeCdpCommand("Emulation.setDeviceMetricsOverride", deviceMetricsMap);
+		chromeDriver.executeCdpCommand("Emulation.setGeolocationOverride", geoPointsMap);
 
 		// Access webpage
-		chromeDriver.get("https://rahulshettyacademy.com/angularAppdemo/");
+		chromeDriver.get("https://www.google.com");
 
 		// Click on hamburger menu
-		chromeDriver.findElement(By.cssSelector(".navbar-toggler")).click();
+		chromeDriver.findElement(By.name("q")).sendKeys("netflix", Keys.ENTER);
 		Thread.sleep(3000);
 
-		// Click on menu link
-		chromeDriver.findElement(By.linkText("Library")).click();
+		// Click on first result link
+		chromeDriver.findElements(By.cssSelector(".LC20lb")).get(0).click();
+
+		System.out.println(MessageFormat.format("Netflix main header text: {0}",
+				chromeDriver.findElement(By.cssSelector(".default-ltr-cache-19f4kxn")).getText()));
 
 		// Close session
 		chromeDriver.close();
