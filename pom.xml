@@ -12,11 +12,12 @@
 	    <version>4.10.0</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools -->
+	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-devtools-v111 -->
 	<dependency>
 	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-devtools-v109</artifactId>
-	    <version>4.8.1</version>
+	    <artifactId>selenium-devtools-v111</artifactId>
+	    <version>4.9.1</version>
+	    <scope>test</scope>
 	</dependency>
 
 
