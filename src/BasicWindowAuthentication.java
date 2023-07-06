@@ -18,6 +18,9 @@ public class BasicWindowAuthentication {
 		// (HasAuthentication)chromeDriver).register(predicate, UsernameAndPassword)
 		((HasAuthentication) chromeDriver).register(uriPredicate, UsernameAndPassword.of("foo", "bar"));
 		chromeDriver.get("http://httpbin.org/basic-auth/foo/bar");
+
+		// Close session
+		chromeDriver.close();
 	}
 
 }

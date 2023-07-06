@@ -32,10 +32,10 @@ public class SetGeoLocationTest {
 		// existing wrapper method
 		chromeDriver.executeCdpCommand("Emulation.setGeolocationOverride", geoPointsMap);
 
-		// Access webpage
+		// Access web page
 		chromeDriver.get("https://www.google.com");
 
-		// Click on hamburger menu
+		// Search for netflix results
 		chromeDriver.findElement(By.name("q")).sendKeys("netflix", Keys.ENTER);
 		Thread.sleep(3000);
 

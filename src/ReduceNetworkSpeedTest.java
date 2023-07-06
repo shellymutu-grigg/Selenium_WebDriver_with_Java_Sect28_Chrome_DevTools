@@ -53,7 +53,7 @@ public class ReduceNetworkSpeedTest {
 
 		// Took 15,000ms WITH latency
 
-		// Access webpage
+		// Access web page
 		chromeDriver.get("https://www.google.com");
 
 		// Click on hamburger menu
