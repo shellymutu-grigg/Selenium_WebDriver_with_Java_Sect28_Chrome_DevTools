@@ -34,6 +34,7 @@ public class MockNetworkFailedRequestTest {
 		System.out.println(MessageFormat.format("After Fetch.enable: {0}", devTools.hashCode()));
 
 		// Request is paused listener for request and modify status
+		// CONSUMER - does not consume data, just manipulate
 		devTools.addListener(Fetch.requestPaused(), request -> {
 			System.out.println(MessageFormat.format("Inside Fetch.requestPaused(): {0}", devTools.hashCode()));
 
